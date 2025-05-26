@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommender</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        input[type="number"] {
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            flex-grow: 1;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="number"]:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .recommendations-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .recommendation-section {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        li:nth-child(odd) {
+            background-color: #e9ecef;
+        }
+        
+        .emoji {
+            font-size: 1.2rem;
+        }
+        
+        .no-results {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .recommendations-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎬 Movie Recommendation System</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="user_id">Enter User ID:</label>
+                    <input type="number" id="user_id" name="user_id" required>
+                    <button type="submit">Get Recommendations</button>
+                </div>
+            </form>
+        </div>
+
+        {% if user_id %}
+        <div class="recommendations-container">
+            <div class="recommendation-section">
+                <h2>Genre-Based Recommendations for User {{ user_id }}</h2>
+                <ul>
+                {% for title, score in recommendations.genre %}
+                    <li><span class="emoji">⭐</span> {{ title }} <span class="score">(score: {{ score }})</span></li>
+                {% else %}
+                    <li class="no-results">No genre-based recommendations found.</li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            <div class="recommendation-section">
+                <h2>Collaborative Filtering Recommendations</h2>
+                <ul>
+                {% for title, avg_rating in recommendations.collab %}
+                    <li><span class="emoji">👥</span> {{ title }} <span class="score">(avg rating: {{ avg_rating }})</span></li>
+                {% else %}
+                    <li class="no-results">No collaborative filtering results.</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
