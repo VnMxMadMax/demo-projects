@@ -32,8 +32,8 @@ It leverages the [MovieLens dataset](https://grouplens.org/datasets/movielens/la
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone https://github.com/VnMxMadMax/demo-projects/tree/main/neo4j
+cd neo4j
 ```
 
 ### 2. Install Python Dependencies
