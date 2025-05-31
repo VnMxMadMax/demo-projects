@@ -106,10 +106,11 @@ python manage.py createsuperuser
 
 ## 📸 Screenshots
 
-Add screenshots of the following pages:
-
 - Home Page
+  ![image](https://github.com/user-attachments/assets/fb969a33-e663-404b-b4a8-c1d914f26629)
+
 - Post Detail Page
+- 
 - Like + Comment System
 - Register Page
 
