@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+<h2 class="mb-4 text-center"><i class="fas fa-sign-in-alt me-2"></i>Login</h2>
+{% endblock %}
+
+{% block page_content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="id_username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="id_password" required>
+                        <div class="form-text">
+                            <a href="{% url 'password_reset' %}" class="text-decoration-none">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <p class="mb-0">Don't have an account? <a href="{% url 'register' %}" class="text-decoration-none">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    .card {
+        background-color: #1e1e1e;
+        border-color: #333;
+    }
+    .form-control {
+        background-color: #2d2d2d !important;
+        border-color: #444 !important;
+        color: #e0e0e0 !important;
+    }
+    .form-control:focus {
+        background-color: #333 !important;
+        border-color: #555 !important;
+        color: #fff !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "blog/index.html" %}
+
+{% block page_title %}
+<div class="d-flex align-items-center mb-4">
+    <h2 class="mb-0">
+        <i class="fas fa-folder-open me-2"></i>{{ category }}
+    </h2>
+    <span class="badge bg-secondary ms-2 align-middle">
+        {{ posts.count }} post{{ posts.count|pluralize }}
+    </span>
+</div>
+{% endblock page_title %}

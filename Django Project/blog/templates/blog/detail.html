@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>{{ post.title }}</h2>
+    {% if user.is_authenticated and user == post.author %}
+    <div>
+        <a href="{% url 'edit_post' post.id %}" class="btn btn-sm btn-warning me-2">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a href="{% url 'delete_post' post.id %}" class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i> Delete
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock page_title %}
+
+{% block page_content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <small class="text-muted">
+                <i class="far fa-clock me-1"></i>{{ post.created_at.date }}
+            </small>
+            <div>
+                {% for category in post.categories.all %}
+                <a href="{% url 'blog_category' category.name %}" class="badge bg-secondary text-decoration-none me-1">
+                    <i class="fas fa-tag me-1"></i>{{ category.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="post-content mb-4">
+            {{ post.body|linebreaks }}
+        </div>
+
+        {% if post.image %}
+        <div class="text-center mb-4">
+            <img src="{{ post.image.url }}" class="img-fluid rounded" alt="Post image" style="max-height: 500px;">
+        </div>
+        {% endif %}
+
+        {% if post.video %}
+        <div class="ratio ratio-16x9 mb-4">
+            <video controls class="rounded">
+                <source src="{{ post.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <button class="btn btn-sm like-btn {% if user in post.likes.all %}btn-danger{% else %}btn-outline-danger{% endif %}" data-id="{{ post.id }}">
+                <i class="fas fa-heart{% if user in post.likes.all %}-circle-check{% endif %} me-1"></i>
+                <span id="like-count-{{ post.id }}">{{ post.likes.count }}</span>
+            </button>
+            <span class="text-muted">
+                <i class="fas fa-comment me-1"></i>{{ post.comment_set.count }} comments
+            </span>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-dark">
+                <h5 class="mb-0"><i class="fas fa-comments me-2"></i>Comments</h5>
+            </div>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="mb-3 pb-3 border-bottom border-secondary">
+                    <div class="d-flex justify-content-between">
+                        <strong>{{ comment.author }}</strong>
+                        <small class="text-muted">{{ comment.created_on.date }}</small>
+                    </div>
+                    <p class="mb-0 mt-2">{{ comment.body|linebreaks }}</p>
+                </div>
+                {% empty %}
+                <p class="text-muted">No comments yet. Be the first to comment!</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h5 class="mb-0"><i class="fas fa-comment-dots me-2"></i>Leave a Comment</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        {{ form.author }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Your Comment</label>
+                        {{ form.body }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-1"></i>Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
