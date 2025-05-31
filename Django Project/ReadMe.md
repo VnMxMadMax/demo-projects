@@ -168,6 +168,6 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ## 📽️ Demo Video
-
-> _Coming Soon_ or _Watch it on YouTube [link here]_
+https://www.loom.com/share/eb7727ab4e554f88ba16f0d90f1d8cae
+https://www.loom.com/share/88e5935dd6af4baca75cc19b979143ca
 
