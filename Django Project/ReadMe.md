@@ -79,11 +79,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> If `requirements.txt` doesn't exist, you can generate it using:
-> ```bash
-> pip freeze > requirements.txt
-> ```
-
 ### 4. Apply Migrations
 
 ```bash
