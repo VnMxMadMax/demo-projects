@@ -107,12 +107,20 @@ python manage.py createsuperuser
 ## 📸 Screenshots
 
 - Home Page
+  
   ![image](https://github.com/user-attachments/assets/fb969a33-e663-404b-b4a8-c1d914f26629)
 
-- Post Detail Page
-- 
+- Post Blog or Content Page
+
+  ![image](https://github.com/user-attachments/assets/76933a94-dd4c-460a-acbd-15f69e331790)
+
 - Like + Comment System
+
+  ![image](https://github.com/user-attachments/assets/8f0b0bde-6936-43df-9bac-7c116ff1dbee)
+
 - Register Page
+
+  ![image](https://github.com/user-attachments/assets/d9170fb6-91c6-4558-958a-29c1f311eba2)
 
 ---
 
