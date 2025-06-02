@@ -39,6 +39,7 @@ This is a full-stack interactive dashboard for Superstore Sales Data using:
 
 ![Webpage](https://github.com/user-attachments/assets/d29b836a-a3bf-4ae9-b0bd-4878d75beae2)
 ![Webpage Table](https://github.com/user-attachments/assets/a3ac1e2e-701d-4d36-b6e0-ac6741171165)
+
 ![Kibana Dashboard](https://github.com/user-attachments/assets/e4f936a8-c6ad-4682-8502-2f116066e6f0)
 
 ---
