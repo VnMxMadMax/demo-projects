@@ -106,7 +106,6 @@ END
 ## 🙋 Author
 
 **Hammadur Rahman**  
-Aspiring Data Analyst | Python & SQL Enthusiast  
 🔗 [LinkedIn](https://www.linkedin.com/in/hammadur-rahman02/)  
 💻 [GitHub](https://github.com/VnMxMadMax)
 
