@@ -99,7 +99,7 @@ END
 
 ## 📎 Resources
 
-- 📊 ![Dashboard Image](![Dashboard Image](https://github.com/user-attachments/assets/6370832a-f7dc-4aa2-ab89-0ee75b533c43))
+- 📊 ![Dashboard Image](https://github.com/user-attachments/assets/6370832a-f7dc-4aa2-ab89-0ee75b533c43)
 - Dashboard URL - https://lookerstudio.google.com/reporting/69e8d80a-ef6c-475e-92ba-41f92943f3bd
 ---
 
